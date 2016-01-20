@@ -1,0 +1,6 @@
+.bundle/
+log/*.log
+pkg/
+.idea
+.rbenv-gemsets
+spec/internal/db/combustion_test.sqlite

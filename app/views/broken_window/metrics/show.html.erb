@@ -1,0 +1,13 @@
+<%= link_to '', metrics_path, class: 'back-link fa fa-level-up' %>
+
+<div class="show-metric">
+  <h1><%= @metric.name %></h1>
+  <div class="value"><%= BrokenWindow::Metric.format_value @metric.value, @metric.value_type %></div>
+  <div class="required">
+    <div class="minimum"><%= @metric.threshold_type %> <%= BrokenWindow::Metric.format_value @metric.threshold, @metric.value_type %></div>
+  </div>
+</div>
+
+<div class="page-actions">
+  <%= link_to '', edit_metric_path(@metric), class: 'fa fa-pencil-square-o' %>
+</div>

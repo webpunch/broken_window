@@ -1,0 +1,39 @@
+a.back-link
+  float: left
+  text-decoration: none
+  color: black
+  font-size: 42px
+
+.page-actions
+  text-align: center
+
+  a
+    color: black
+    font-size: 42px
+    text-decoration: none
+
+.error_explanation
+  color: red
+
+body
+  color: black
+  padding: 10px
+
+  &.fail
+    background-color: red
+
+  &.pass
+    background-color: green
+
+  &.unknown
+    background-color: gray
+
+  &.background-metric
+    &.fail
+      background-color: darken(red, 10%)
+
+    &.pass
+      background-color: darken(green, 10%)
+
+    &.unknown
+      background-color: darken(gray, 10%)

@@ -24,6 +24,10 @@ module BrokenWindow
       Metric.model_name
     end
 
+    def to_model
+      metric
+    end
+
     delegate :name, :to_param, :threshold, :value_type, :threshold_type, to: :metric
     delegate :value, to: :measurement, allow_nil: true
   end

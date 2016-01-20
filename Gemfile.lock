@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    broken_window (0.0.1)
+    broken_window (1.0.0)
       rails (>= 4.1.12)
 
 GEM

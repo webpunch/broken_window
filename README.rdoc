@@ -1,3 +1,56 @@
 = BrokenWindow
 
 This project rocks and uses MIT-LICENSE.
+
+Installation
+=============
+
+Add:
+
+gem 'broken_window', github: 'webpunch/broken_window'
+
+to your Gemfile
+
+Run: rake broken_window:install:migrations && rake db:migrate
+
+Add to your routes file:
+
+mount BrokenWindow::Engine => "/status"
+
+Create config/initializers/broken_window.rb to register your calculators:
+
+BrokenWindow.register_calculators [
+                                    BrokenWindow::Calculators::ExampleCalculator
+                                  ]
+
+ Create your calculator:
+ 
+
+ module BrokenWindow
+  module Calculators
+    class ExampleCalculator
+      def initialize(options = {})
+       
+      end
+
+      def call
+        # Thing to be calculated
+      end
+      
+    end
+  end
+end
+
+Finally create your metric objects as required (perhaps on a cron or scheduled tasks so you get new data at regular intervals):
+
+BrokenWindow::Metric.create!(
+name: "#{model_name.name} number of items found",
+calculator: BrokenWindow::Calculators::HoursSinceLastImport.name,
+value_type: 'integer',
+threshold: 12,
+threshold_type: 'max',
+arguments: "model_id: #{model_name.id}"
+)
+
+
+

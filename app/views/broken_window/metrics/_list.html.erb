@@ -1,0 +1,13 @@
+<div class="metrics-list">
+  <% metrics.each do |metric| %>
+    <%= link_to(metric, class: "metric #{metric.status}") do %>
+      <% if metric.old? %>
+        <span class="stale-time">
+          <%= time_ago_in_words(metric.measurement.created_at) %> old
+        </span>
+      <% end %>
+      <span class="name"><%= metric.name %></span>
+      <div class="value"><%= BrokenWindow::Metric.format_value metric.value, metric.value_type %></div>
+    <% end %>
+  <% end %>
+</div>

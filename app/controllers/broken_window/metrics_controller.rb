@@ -3,7 +3,7 @@ module BrokenWindow
     layout 'broken_window/application'
 
     def index
-      @metrics = Metric.order(:name).all.map {|metric| MeasuredMetric.new(metric)}
+      @metrics = Metric.roots.map {|metric| MeasuredMetric.new(metric)}
       @status = MetricStatus.combine(@metrics.map(&:status))
       @body_class = 'background-metric'
     end
@@ -42,7 +42,7 @@ module BrokenWindow
     private
 
     def metric_params
-      params[:metric].permit(:name, :threshold, :value_type, :calculator, :arguments, :threshold_type)
+      params[:metric].permit(:name, :threshold, :value_type, :calculator, :arguments, :threshold_type, :parent_id)
     end
   end
 end

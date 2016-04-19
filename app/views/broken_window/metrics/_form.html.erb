@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <%= f.label :calculator %>
-    <%= f.select :calculator, BrokenWindow.calculators.map(&:name), class: 'form-control' %>
+    <%= f.select :calculator, BrokenWindow.calculators.map(&:name), {include_blank: true}, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :value_type %>
@@ -24,6 +24,10 @@
   <div class="form-group">
     <%= f.label :arguments %>
     <%= f.text_field :arguments, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :parent_id %>
+    <%= f.text_field :parent_id, class: 'form-control' %>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
   or

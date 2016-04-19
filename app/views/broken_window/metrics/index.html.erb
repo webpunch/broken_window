@@ -1,11 +1,4 @@
-<div class="metrics-list">
-  <% @metrics.each do |metric| %>
-    <%= link_to(metric, class: "metric #{metric.status}") do %>
-      <span class="name"><%= metric.name %></span>
-      <div class="value"><%= BrokenWindow::Metric.format_value metric.value, metric.value_type %></div>
-    <% end %>
-  <% end %>
-</div>
+<%= render partial: 'list', locals: {metrics: @metrics} %>
 <div class="page-actions">
   <%= link_to '', new_metric_path, class: 'fa fa-plus' %>
 </div>

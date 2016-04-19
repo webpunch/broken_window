@@ -18,7 +18,7 @@ module BrokenWindow
     end
 
     def calculator_class
-      raise ArgumentError unless @metric.calculator
+      raise ArgumentError.new("No calculator for #{@metric.inspect}") unless @metric.calculator.present?
 
       @metric.calculator.constantize
     end

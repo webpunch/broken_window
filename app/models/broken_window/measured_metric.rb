@@ -38,7 +38,7 @@ module BrokenWindow
       metric
     end
 
-    delegate :name, :to_param, :threshold, :value_type, :threshold_type, :container?, to: :metric
+    delegate :name, :to_param, :threshold, :value_type, :threshold_type, :parent, :container?, to: :metric
     delegate :value, to: :measurement, allow_nil: true
 
     private

@@ -4,7 +4,7 @@ module BrokenWindow
 
     def call
       Metric.all.each do |metric|
-        MetricMeasurer.call(metric)
+        MetricMeasurer.call(metric) unless metric.container?
       end
     end
   end

@@ -1,6 +1,6 @@
 module BrokenWindow
   module ApplicationHelper
-    def up_path(metric)
+    def metric_up_path(metric)
       if metric.parent
         metric_path metric.parent
       else

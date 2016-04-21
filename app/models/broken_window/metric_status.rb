@@ -16,7 +16,7 @@ module BrokenWindow
       end
 
       def combine(states)
-        states.min
+        states.nil? || states.empty? ? unknown : states.compact.min
       end
     end
 

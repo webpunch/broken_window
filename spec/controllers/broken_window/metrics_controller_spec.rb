@@ -3,7 +3,7 @@ require 'spec_helper'
 module BrokenWindow
   RSpec.describe MetricsController, :type => :controller do
     routes { BrokenWindow::Engine.routes }
-    let(:metric) { Metric.create!(name: 'Percentage scraped', calculator: 'null_calculator', value_type: 'percentage', threshold: 50.0) }
+    let(:metric) { Metric.create!(name: 'Percentage scraped', calculator: 'NullCalculator', value_type: 'percentage', threshold: 50.0, threshold_type: "min") }
 
     describe "#show" do
       it "displays as unknown if there have never been any measurements" do

@@ -4,11 +4,13 @@ deploy:
 language: ruby
 services:
 cache:
+  directories:
+    - vendor/bundle
 rvm:
 - 2.3.0
-bundler_args: "--without development --path vendor/bundle"
+bundler_args: "--path vendor/bundle"
 script:
-- bundle exec rspec spec
+- "bundle exec rspec spec"
 env:
   global:
 notifications:

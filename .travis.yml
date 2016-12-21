@@ -1,0 +1,18 @@
+before_script:
+before_install:
+deploy:
+language: ruby
+services:
+cache:
+rvm:
+- 2.3.0
+bundler_args: "--without development --path vendor/bundle"
+script:
+- bundle exec rspec spec
+env:
+  global:
+notifications:
+  email: false
+  slack: webpunch:OXwa3Zg7zQ1tin0cgzPhpaVF
+sudo: false
+addons:

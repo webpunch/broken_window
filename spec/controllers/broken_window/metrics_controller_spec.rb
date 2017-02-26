@@ -19,6 +19,15 @@ module BrokenWindow
 
         expect(assigns(:status).to_s).to eq('pass')
       end
+
+      it "displays as snoonzed if the metric has been snoozed" do
+        metric.measurements.create!(value: 12.0)
+        metric.snooze!
+
+        get :show, id: metric
+
+        expect(assigns(:status).to_s).to eq('snoozed')
+      end
     end
   end
 end

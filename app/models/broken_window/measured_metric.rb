@@ -38,12 +38,14 @@ module BrokenWindow
       metric
     end
 
-    delegate :name, :to_param, :threshold, :value_type, :threshold_type, :parent, :container?, to: :metric
+    delegate :name, :to_param, :threshold, :value_type, :threshold_type, :parent, :container?, :snoozed?, to: :metric
     delegate :value, to: :measurement, allow_nil: true
 
     private
 
     def calculate_status
+      return MetricStatus.snoozed if snoozed?
+
       if container?
         MetricStatus.combine(children.map(&:status))
       else

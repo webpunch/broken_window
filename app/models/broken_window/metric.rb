@@ -4,6 +4,8 @@ module BrokenWindow
     THRESHOLD_TYPES = %w(min max)
     VALID_CLASS_NAME = /\A[A-Z][a-zA-Z_0-9\:]*\z/
 
+    SNOOZE_INTERVAL = 2.weeks
+
     has_many :measurements
 
     validates :name, presence: true, length: {maximum: 255}
@@ -36,5 +38,16 @@ module BrokenWindow
       calculator.blank?
     end
 
+    def snooze!
+      update!(snoozed_at: Time.now)
+    end
+
+    def snoozed?
+      snoozed_at && snoozed_at >= SNOOZE_INTERVAL.ago
+    end
+
+    def unsnooze!
+      update!(snoozed_at: nil)
+    end
   end
 end

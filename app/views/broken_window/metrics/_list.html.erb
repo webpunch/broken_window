@@ -6,7 +6,14 @@
           <%= time_ago_in_words(metric.measurement.created_at) %> old
         </span>
       <% end %>
-      <span class="name"><%= metric.name %></span>
+
+      <span class="name">
+        <% if metric.snoozed? %>
+          <i class="fa fa-bed"></i>
+        <% end %>
+        <%= metric.name %>
+      </span>
+
       <div class="value"><%= BrokenWindow::Metric.format_value metric.value, metric.value_type %></div>
     <% end %>
   <% end %>

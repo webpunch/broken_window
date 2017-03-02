@@ -1,6 +1,6 @@
 module BrokenWindow
   class MetricStatus
-    NAMES = [:fail, :unknown, :pass]
+    NAMES = [:fail, :unknown, :pass, :snoozed]
 
     class << self
       def pass
@@ -13,6 +13,10 @@ module BrokenWindow
 
       def fail
         new(:fail)
+      end
+
+      def snoozed
+        new(:snoozed)
       end
 
       def combine(states)

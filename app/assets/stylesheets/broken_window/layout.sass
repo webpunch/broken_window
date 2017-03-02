@@ -8,6 +8,7 @@ a.back-link
   text-align: center
 
   a
+    margin: 0 10px
     color: black
     font-size: 42px
     text-decoration: none
@@ -28,6 +29,9 @@ body
   &.unknown
     background-color: gray
 
+  &.snoozed
+    background-color: $snooze-color
+
   &.background-metric
     &.fail
       background-color: darken(red, 10%)
@@ -37,3 +41,6 @@ body
 
     &.unknown
       background-color: darken(gray, 10%)
+
+    &.snoozed
+      background-color: darken($snooze-color, 10%)

@@ -1,7 +1,12 @@
 <%= link_to '', metric_up_path(@metric), class: 'back-link fa fa-level-up' %>
 
 <div class="show-metric">
-  <h1><%= @metric.name %></h1>
+  <h1>
+    <% if @metric.snoozed? %>
+      <i class="fa fa-bed"></i>
+    <% end %>
+    <%= @metric.name %>
+  </h1>
   <%- unless @metric.container? %>
     <div class="value"><%= BrokenWindow::Metric.format_value @metric.value, @metric.value_type %></div>
     <div class="required">
@@ -13,5 +18,11 @@
 <%= render partial: 'list', locals: {metrics: @metric.children} %>
 
 <div class="page-actions">
-  <%= link_to '', edit_metric_path(@metric), class: 'fa fa-pencil-square-o' %>
+  <%= link_to '', edit_metric_path(@metric), class: 'fa fa-pencil-square-o', title: 'Edit' %>
+
+  <% if @metric.snoozed? %>
+    <%= link_to '', unsnooze_metric_path(@metric), method: :post, class: 'fa fa-bell', title: "Unsnooze (snoozed at #{@metric.metric.snoozed_at})" %>
+  <% else %>
+    <%= link_to '', snooze_metric_path(@metric), method: :post, class: 'fa fa-bed', title: 'Snooze for 2 weeks' %>
+  <% end %>
 </div>

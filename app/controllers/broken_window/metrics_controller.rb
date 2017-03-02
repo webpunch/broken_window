@@ -39,6 +39,20 @@ module BrokenWindow
       end
     end
 
+    def snooze
+      @metric = Metric.find(params[:id])
+      @metric.snooze!
+
+      redirect_to @metric
+    end
+
+    def unsnooze
+      @metric = Metric.find(params[:id])
+      @metric.unsnooze!
+
+      redirect_to @metric
+    end
+
     private
 
     def metric_params

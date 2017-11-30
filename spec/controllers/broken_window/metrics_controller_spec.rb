@@ -16,7 +16,7 @@ module BrokenWindow
 
     describe "#show" do
       it "displays as unknown if there have never been any measurements" do
-        get :show, id: metric
+        get :show, params: { id: metric }
 
         expect(assigns(:status).to_s).to eq('unknown')
       end
@@ -24,7 +24,7 @@ module BrokenWindow
       it "displays as pass if there the latest measurement is above the minimum" do
         metric.measurements.create!(value: 52.0)
 
-        get :show, id: metric
+        get :show, params: { id: metric }
 
         expect(assigns(:status).to_s).to eq('pass')
       end
@@ -33,7 +33,7 @@ module BrokenWindow
         metric.measurements.create!(value: 12.0)
         metric.snooze!
 
-        get :show, id: metric
+        get :show, params: { id: metric }
 
         expect(assigns(:status).to_s).to eq('snoozed')
       end

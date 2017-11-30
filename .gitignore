@@ -4,3 +4,4 @@ pkg/
 .idea
 .rbenv-gemsets
 spec/internal/db/combustion_test.sqlite
+spec/internal/tmp/**

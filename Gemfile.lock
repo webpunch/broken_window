@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    broken_window (1.2.1)
+    broken_window (1.2.2)
       acts_as_tree
       rails (>= 3.2)
 
@@ -63,19 +63,19 @@ GEM
       railties (>= 3.0.0)
       thor (>= 0.14.6)
     concurrent-ruby (1.0.5)
-    crass (1.0.3)
+    crass (1.0.4)
     diff-lcs (1.3)
-    erubi (1.7.0)
+    erubi (1.7.1)
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    i18n (0.9.1)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    loofah (2.1.1)
+    loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -83,13 +83,13 @@ GEM
     method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
-    nio4r (2.1.0)
-    nokogiri (1.8.1)
+    minitest (5.11.3)
+    nio4r (2.3.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     public_suffix (3.0.1)
-    rack (2.0.3)
-    rack-test (0.8.2)
+    rack (2.0.5)
+    rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
@@ -110,8 +110,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.3)
-      loofah (~> 2.0)
+    rails-html-sanitizer (1.0.4)
+      loofah (~> 2.2, >= 2.2.2)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -154,7 +154,7 @@ GEM
     sqlite3 (1.3.13)
     thor (0.20.0)
     thread_safe (0.3.6)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -177,4 +177,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.15.3
+   1.16.1

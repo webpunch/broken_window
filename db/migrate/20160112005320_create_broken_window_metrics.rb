@@ -1,4 +1,4 @@
-class CreateBrokenWindowMetrics < ActiveRecord::Migration
+class CreateBrokenWindowMetrics < ActiveRecord::Migration[4.2]
   def change
     create_table :broken_window_metrics do |t|
       t.string :name

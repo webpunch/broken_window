@@ -12,8 +12,8 @@ module BrokenWindow
       @metric = metric
     end
 
-    def measurement
-      @measurement ||= @metric.latest_measurement unless container?
+    def latest_measurement
+      @latest_measurement ||= @metric.latest_measurement unless container?
     end
 
     def status
@@ -21,7 +21,7 @@ module BrokenWindow
     end
 
     def old?
-      measurement && measurement.created_at < 3.days.ago
+      latest_measurement && latest_measurement.created_at < 3.days.ago
     end
 
     def children
@@ -38,8 +38,8 @@ module BrokenWindow
       metric
     end
 
-    delegate :name, :to_param, :threshold, :value_type, :threshold_type, :parent, :container?, :snoozed?, to: :metric
-    delegate :value, to: :measurement, allow_nil: true
+    delegate :measurements, :name, :to_param, :threshold, :value_type, :threshold_type, :parent, :container?, :snoozed?, to: :metric
+    delegate :value, to: :latest_measurement, allow_nil: true
 
     private
 
@@ -49,7 +49,7 @@ module BrokenWindow
       if container?
         MetricStatus.combine(children.map(&:status))
       else
-        StatusChecker.check_status(@metric, measurement)
+        StatusChecker.check_status(@metric, latest_measurement)
       end
     end
   end

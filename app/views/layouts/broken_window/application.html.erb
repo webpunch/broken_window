@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <%= stylesheet_link_tag    "broken_window/application", media: "all" %>
   <%= javascript_include_tag "broken_window/application" %>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= [@status.to_s, @body_class].compact.join(' ') %>">

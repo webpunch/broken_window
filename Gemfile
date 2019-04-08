@@ -5,11 +5,8 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'acts_as_tree'
 gem 'rails-controller-testing', group: :test
 gem 'capybara', group: :test
-gem 'sass', group: :test
-gem 'jquery-rails', group: :test
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

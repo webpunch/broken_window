@@ -3,7 +3,7 @@
     <%= link_to(metric, class: "metric #{metric.status}") do %>
       <% if metric.old? %>
         <span class="stale-time">
-          <%= time_ago_in_words(metric.measurement.created_at) %> old
+          <%= time_ago_in_words(metric.latest_measurement.created_at) %> old
         </span>
       <% end %>
 

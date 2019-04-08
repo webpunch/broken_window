@@ -18,7 +18,7 @@ module BrokenWindow
     acts_as_tree order: "name"
 
     def latest_measurement
-      measurements.latest_first.first
+      measurements.last
     end
 
     def arguments_hash

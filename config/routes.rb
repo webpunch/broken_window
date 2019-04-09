@@ -1,7 +1,10 @@
 BrokenWindow::Engine.routes.draw do
   resources :metrics, path: '/' do
-    post :snooze, on: :member
-    post :unsnooze, on: :member
+    member do
+      post :snooze
+      post :unsnooze
+    end
   end
+
   root to: "metrics#index"
 end

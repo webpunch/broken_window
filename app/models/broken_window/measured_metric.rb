@@ -20,6 +20,17 @@ module BrokenWindow
       @status ||= calculate_status
     end
 
+    def daily_measurements
+      @daily_measurements ||= measurements
+        .group_by{ |measurement| measurement.created_at.to_date }
+        .map{ |_, measurements_for_date| measurements_for_date.max_by(&:created_at) }
+        .sort_by(&:created_at)
+    end
+
+    def value
+      @value ||= threshold_measurements.any? ? (threshold_measurements.sum(&:value) / threshold_measurements.size) : nil
+    end
+
     def old?
       latest_measurement && latest_measurement.created_at < 3.days.ago
     end
@@ -39,7 +50,6 @@ module BrokenWindow
     end
 
     delegate :measurements, :name, :to_param, :threshold, :value_type, :threshold_type, :parent, :container?, :snoozed?, to: :metric
-    delegate :value, to: :latest_measurement, allow_nil: true
 
     private
 
@@ -49,8 +59,12 @@ module BrokenWindow
       if container?
         MetricStatus.combine(children.map(&:status))
       else
-        StatusChecker.check_status(@metric, latest_measurement)
+        StatusChecker.check_status(self)
       end
+    end
+
+    def threshold_measurements
+      @threshold_measurements ||= daily_measurements.select { |measurement| measurement.created_at > metric.threshold_period.days.ago }
     end
   end
 end

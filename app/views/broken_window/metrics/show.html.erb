@@ -13,10 +13,10 @@
       <div class="minimum"><%= @metric.threshold_type %> <%= BrokenWindow::Metric.format_value @metric.threshold, @metric.value_type %></div>
     </div>
     <%= tag :div, class: "chart", data: {
-      sparkline: @metric.measurements.order(id: :asc).map{ |measurement| {
+      sparkline: @metric.daily_measurements.map{ |measurement| {
         value: measurement.value,
         date: measurement.created_at.to_date,
-      } }.uniq{ |d| d[:date] }.to_json,
+      } }.to_json,
       critical_value: @metric.threshold,
       width: 400,
       height: 150,

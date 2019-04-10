@@ -3,7 +3,7 @@ module BrokenWindow
     layout 'broken_window/application'
 
     def index
-      @metrics = Metric.roots.map {|metric| MeasuredMetric.new(metric)}
+      @metrics = Metric.roots.map { |metric| MeasuredMetric.new(metric) }
       @status = MetricStatus.combine(@metrics.map(&:status))
       @body_class = 'background-metric'
     end
@@ -43,20 +43,20 @@ module BrokenWindow
       @metric = Metric.find(params[:id])
       @metric.snooze!
 
-      redirect_to @metric
+      redirect_back(fallback_location: metric_path(@metric))
     end
 
     def unsnooze
       @metric = Metric.find(params[:id])
       @metric.unsnooze!
 
-      redirect_to @metric
+      redirect_back(fallback_location: metric_path(@metric))
     end
 
     private
 
     def metric_params
-      params[:metric].permit(:name, :threshold, :value_type, :calculator, :arguments, :threshold_type, :parent_id)
+      params[:metric].permit(:name, :threshold, :value_type, :calculator, :arguments, :threshold_type, :threshold_period, :parent_id)
     end
   end
 end

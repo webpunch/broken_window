@@ -65,7 +65,7 @@ module BrokenWindow
 
     def threshold_measurements
       @threshold_measurements ||= daily_measurements.select do |measurement|
-        measurement.value && (measurement.created_at > metric.threshold_period.days.ago.beginning_of_day)
+        measurement.value && (measurement.created_at > metric.threshold_period.days.ago)
       end
     end
   end

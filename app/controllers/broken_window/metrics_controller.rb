@@ -32,7 +32,7 @@ module BrokenWindow
 
     def update
       @metric = Metric.find(params[:id])
-      if @metric.update_attributes(metric_params)
+      if @metric.update(metric_params)
         redirect_to @metric
       else
         render action: :edit

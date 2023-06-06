@@ -1,3 +1,5 @@
+@import "./_colors"
+
 a.back-link
   float: left
   text-decoration: none
@@ -14,17 +16,17 @@ a.back-link
     text-decoration: none
 
 .error_explanation
-  color: red
+  color: $red
 
 body
   color: black
   padding: 10px
 
   &.fail
-    background-color: red
+    background-color: $red
 
   &.pass
-    background-color: green
+    background-color: $green
 
   &.unknown
     background-color: gray
@@ -34,10 +36,10 @@ body
 
   &.background-metric
     &.fail
-      background-color: darken(red, 10%)
+      background-color: darken($red, 10%)
 
     &.pass
-      background-color: darken(green, 10%)
+      background-color: darken($green, 10%)
 
     &.unknown
       background-color: darken(gray, 10%)

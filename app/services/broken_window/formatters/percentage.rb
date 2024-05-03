@@ -4,7 +4,7 @@ module BrokenWindow
       include ActionView::Helpers::NumberHelper
 
       def call(value)
-        number_to_percentage(value, precision: 0) if value
+        number_to_percentage(value, precision: 2) if value
       end
     end
   end

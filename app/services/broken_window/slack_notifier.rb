@@ -16,11 +16,13 @@ module BrokenWindow
       private
 
       def format_metrics(metrics)
-        if metrics.empty?
-          ":heavy_check_mark: No broken window metrics failed"
-        else
-          "These metrics are failing in broken window:\n\n" + metrics.map{ |metric| format_metric(metric) }.join("\n\n")
-        end
+        return ":heavy_check_mark: No broken window metrics failed" if metrics.empty?
+
+        formatted_metrics = metrics
+          .sort_by(&:name)
+          .map { |metric| format_metric(metric) }
+
+        "These metrics are failing in broken window:\n\n" + formatted_metrics.join("\n\n")
       end
 
       def format_metric(metric)
@@ -32,7 +34,7 @@ module BrokenWindow
         when "pass"
           ":heavy_check_mark:"
         when "fail"
-          ":negative_squared_cross_mark:"
+          ":x:"
         else
           raise ArgumentError.new("Undefined metric status: #{metric.status.to_s}")
         end
